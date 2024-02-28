@@ -6,13 +6,11 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/02/28 16:01:26 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:52:59 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-#include <string.h>
 
 int	main(void)
 {
@@ -35,6 +33,5 @@ int	main(void)
 		exit(EXIT_FAILURE);
 	}
 	mlx_loop(mlx);
-	// mlx_terminate(mlx);
 	return (EXIT_SUCCESS);
 }
