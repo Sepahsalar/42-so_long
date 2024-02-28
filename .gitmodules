@@ -1,0 +1,3 @@
+[submodule "lib/MLX42"]
+	path = lib/MLX42
+	url = https://github.com/Sepahsalar/42-so_long
