@@ -6,7 +6,7 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/26 15:48:51 by nnourine          #+#    #+#              #
-#    Updated: 2024/02/28 10:28:43 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/04 10:42:17 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ CFLAGS = -Wall -Wextra -Werror
 LIBMLX = lib/MLX42
 LIBFT = lib/libft
 
-HEADERS	= -I ./include -I ${LIBMLX}/include
+HEADERS	= -I include -I ${LIBMLX}/include
 LIBS_FLAGS = ${LIBMLX}/build/libmlx42.a -ldl -pthread -lm -L/Users/${USER}/.brew/Cellar/glfw/3.4/lib -lglfw -L${LIBFT} -lft
 # MORE_FLAGS = -g -Ofast -framework OpenGL -framework AppKit
-SRCS = src/so_long.c
+SRCS = src/so_long.c src/check_args.c
 OBJ = ${SRCS:.c=.o}
 
 %.o: %.c

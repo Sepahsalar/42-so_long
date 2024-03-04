@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/04 12:15:00 by asohrabi         ###   ########.fr       */
+/*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
+/*   Updated: 2024/03/04 11:45:55 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// check norminette for mlx42 functions
-
-void	ft_exit(char *message, int is_success)
+void	check_extension(char *map, char *extension)
 {
-	if (is_success == 1)
+	size_t	ext_len;
+	size_t	map_len;
+
+	map_len = ft_strlen(map) - 1;
+	ext_len = ft_strlen(extension) - 1;
+	while (ext_len > 0)
 	{
-		exit(EXIT_SUCCESS);
-	}
-	else
-	{
-		ft_putendl_fd("Error", STDERR_FILENO);
-		ft_putendl_fd(message, STDERR_FILENO);
-		exit(EXIT_FAILURE);
+		if (map[map_len] != extension[ext_len])
+			ft_exit("Wrong file extension\nEx: map.ber", STDERR_FILENO);
+		map_len--;
+		ext_len--;
 	}
 }
 
-int	main(int argc, char **argv)
+void	check_args(char *argv)
 {
-	if (argc != 2)
-		ft_exit("Wrong number of arguments!\nEx: ./so_long map.ber", 0);
-	check_args(argv[1]);
+	int	fd;
+
+	check_extension(argv, ".ber");
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+		ft_exit("Opening file failed", 0);
 	
-	return (0);
 }
