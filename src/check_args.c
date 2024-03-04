@@ -6,13 +6,13 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/04 17:48:01 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/04 18:52:36 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_extension(char *map, char *extension)
+static void	check_extension(char *map, char *extension)
 {
 	size_t	ext_len;
 	size_t	map_len;
@@ -37,7 +37,7 @@ static char	*ft_read(int fd)
 	i = 1;
 	map = ft_calloc(1, 1);
 	if (!map)
-		ft_exit("Allocating memory failed");
+		ft_exit("Initializing failed");
 	while (i != 0)
 	{
 		i = read(fd, buf, 50);
@@ -46,16 +46,39 @@ static char	*ft_read(int fd)
 		buf[i] = '\0';
 		map = gnl_strjoin(map, buf);
 		if (!map)
-			ft_exit("Allocating memory failed");
+			ft_exit("Joining failed");
 	}
 	close(fd);
 	return (map);
 }
 
-void	check_args(char *argv)
+static t_line	*check_rectangular(char **total_lines, t_line *line)
+{
+	int		i;
+
+	i = 0;
+	while (total_lines[i + 1])
+	{
+		line->width = ft_strlen(total_lines[i++]);
+		if (line->width != ft_strlen(total_lines[i]))
+			ft_exit("Invalid map: Not rectangular");
+	}
+	line->width = ft_strlen(total_lines[i]);
+	line->count = i;
+	return (line);
+}
+
+void	check_letters(char *map)
+{
+	
+}
+
+void	check_args(char *argv, t_line *line)
 {
 	int		fd;
 	char	*map;
+	char	**total_lines;
+	int		line_count;
 
 	check_extension(argv, ".ber");
 	fd = open(argv, O_RDONLY);
@@ -64,5 +87,9 @@ void	check_args(char *argv)
 	map = ft_read(fd);
 	if (!map)
 		ft_exit("Empty map");
-	
+	total_lines = ft_split(map, '\n');
+	if (!total_lines)
+		ft_exit("Invalid map");
+	line = check_rectangular(total_lines, line);
+	check_letters(map);
 }
