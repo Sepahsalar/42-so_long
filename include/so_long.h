@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/04 10:48:28 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:37:45 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
 void	check_args(char *argv);
-void	ft_exit(char *message, int is_success);
+void	ft_exit(char *message);
+char	*gnl_strjoin(char *s1, char *s2);
 
 #endif
