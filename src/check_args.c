@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/04 18:52:36 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:54:44 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,43 @@ static t_line	*check_rectangular(char **total_lines, t_line *line)
 	return (line);
 }
 
-void	check_letters(char *map)
+static void	check_pe(char *map)
+{
+	char	*check;
+
+	check = ft_strchr(map, 'P');
+	if (check)
+		if (ft_strchr(check + 1, 'P'))
+			ft_exit("Invalid map: More than 1 starting position");
+	check = ft_strchr(map, 'E');
+	if (check)
+		if (ft_strchr(check + 1, 'E'))
+			ft_exit("Invalid map: More than 1 map exit");
+}
+
+static int	check_letters(char *map)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	if (!(ft_strchr(map, 'C')) || !(ft_strchr(map, 'P'))
+		|| !(ft_strchr(map, 'E')) || !(ft_strchr(map, '1')))
+		ft_exit("Invalid map: Not enough characters");
+	check_pe(map);
+	while (map[i])
+	{
+		if (!(ft_strchr("01CEP\n", map[i])))
+			ft_exit("Invalid map: Not enough characters");
+		if (map[i] == 'C')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+static void	check_walls()
 {
 	
 }
@@ -79,6 +115,7 @@ void	check_args(char *argv, t_line *line)
 	char	*map;
 	char	**total_lines;
 	int		line_count;
+	int		collectible_count;
 
 	check_extension(argv, ".ber");
 	fd = open(argv, O_RDONLY);
@@ -91,5 +128,6 @@ void	check_args(char *argv, t_line *line)
 	if (!total_lines)
 		ft_exit("Invalid map");
 	line = check_rectangular(total_lines, line);
-	check_letters(map);
+	collectible_count = check_letters(map);
+	check_walls(total_lines, line);
 }
