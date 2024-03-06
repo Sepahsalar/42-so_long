@@ -6,19 +6,19 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/06 13:49:09 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/06 17:35:30 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBMLX = lib/MLX42
 LIBFT = lib/libft
 
 HEADERS	= -I include -I ${LIBMLX}/include
 LIBS_FLAGS = ${LIBMLX}/build/libmlx42.a -ldl -pthread -lm -L/Users/${USER}/.brew/Cellar/glfw/3.4/lib -lglfw -L${LIBFT} -lft
 # MORE_FLAGS = -g -Ofast -framework OpenGL -framework AppKit
-SRCS = src/so_long.c src/check_args.c src/so_long_utils.c src/ft_read.c
+SRCS = src/so_long.c src/check_args.c src/so_long_utils.c src/ft_read.c src/check_valid_path.c
 OBJ = ${SRCS:.c=.o}
 
 %.o: %.c

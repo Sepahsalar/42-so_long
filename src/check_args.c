@@ -6,25 +6,28 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 13:58:29 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:02:59 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static t_line	*check_rectangular(char **total_lines, t_line *line)
+static t_line	*check_rectangular(char **total_lines)
 {
 	int		i;
+	t_line	*line;
 
 	i = 0;
+	line = malloc(sizeof(t_line));
 	while (total_lines[i + 1])
 	{
-		line->width = ft_strlen(total_lines[i++]);
-		if (line->width != ft_strlen(total_lines[i]))
+		line->width = ft_strlen(total_lines[i]);
+		if (line->width != ft_strlen(total_lines[i + 1]))
 			ft_exit("Invalid map: Not rectangular");
+		i++;
 	}
 	line->width = ft_strlen(total_lines[i]);
-	line->count = i;
+	line->count = i + 1;
 	if (line->count <= 0 || line->width <= 0)
 		ft_exit("Invalid map");
 	return (line);
@@ -32,7 +35,7 @@ static t_line	*check_rectangular(char **total_lines, t_line *line)
 
 static void	check_walls(char **total_lines, t_line *line)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < line->width)
@@ -49,19 +52,14 @@ static void	check_walls(char **total_lines, t_line *line)
 		i++;
 	}
 }
-
-void	check_valid_path(char **total_lines, t_line *line)
-{
-	
-}
-
-int	check_args(char *argv, t_line *line)
+//remember to free memory
+int	check_args(char *argv)
 {
 	int		fd;
 	char	*map;
 	char	**total_lines;
-	int		line_count;
 	int		collectible_count;
+	t_line	*line;
 
 	check_extension(argv, ".ber");
 	fd = open(argv, O_RDONLY);
@@ -73,9 +71,12 @@ int	check_args(char *argv, t_line *line)
 	total_lines = ft_split(map, '\n');
 	if (!total_lines)
 		ft_exit("Invalid map");
-	line = check_rectangular(total_lines, line);
+	line = check_rectangular(total_lines);
+	if (!line)
+		ft_exit("Allocating memory failed");
 	collectible_count = check_letters(map);
 	check_walls(total_lines, line);
 	check_valid_path(total_lines, line);
+	close(fd);
 	return (collectible_count);
 }

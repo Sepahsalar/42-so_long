@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:36:40 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 13:56:00 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:21:23 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*gnl_resultjoin(char *s1, char *s2)
 	j = 0;
 	result = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!result)
-		return (NULL);
+		ft_exit("Allocating memory failed");
 	while (s1[++i])
 		result[i] = s1[i];
 	while (s2[j])
@@ -39,14 +39,17 @@ char	*gnl_strjoin(char *s1, char *s2)
 	{
 		s1 = (char *)malloc(1 * sizeof(char));
 		if (!s1)
-			return (NULL);
+			ft_exit("Allocating memory failed");
 		s1[0] = '\0';
 	}
 	if (!s2)
-		return (ft_free(s1));
-	result = ft_resultjoin(s1, s2);
+	{
+		free(s1);
+		return (NULL);
+	}
+	result = gnl_resultjoin(s1, s2);
 	if (!result)
-		return (ft_free(s1));
+		ft_exit("Allocating memory failed");
 	free(s1);
 	return (result);
 }

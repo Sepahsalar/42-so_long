@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 13:18:43 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/06 17:53:01 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@ void	ft_exit(char *message)
 
 int	main(int argc, char **argv)
 {
-	t_line	*line;
 	int		c_count;
 
-	line = NULL;
 	if (argc != 2)
 		ft_exit("Wrong number of arguments!\nEx: ./so_long map.ber");
-	c_count = check_args(argv[1], line);
+	c_count = check_args(argv[1]);
 	
 	return (0);
 }
