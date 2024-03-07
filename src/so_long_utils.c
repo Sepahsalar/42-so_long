@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:36:40 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 17:21:23 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:24:53 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,54 +54,54 @@ char	*gnl_strjoin(char *s1, char *s2)
 	return (result);
 }
 
-void	check_extension(char *map, char *extension)
+void	check_extension(char *str, char *extension)
 {
 	size_t	ext_len;
 	size_t	map_len;
 
-	map_len = ft_strlen(map) - 1;
+	map_len = ft_strlen(str) - 1;
 	ext_len = ft_strlen(extension) - 1;
 	while (ext_len > 0)
 	{
-		if (map[map_len] != extension[ext_len])
+		if (str[map_len] != extension[ext_len])
 			ft_exit("Wrong file extension\nEx: map.ber");
 		map_len--;
 		ext_len--;
 	}
 }
 
-void	check_pe(char *map)
+void	check_pe(char *str)
 {
 	char	*check;
 
-	check = ft_strchr(map, 'P');
+	check = ft_strchr(str, 'P');
 	if (check)
 		if (ft_strchr(check + 1, 'P'))
 			ft_exit("Invalid map: More than 1 starting position");
-	check = ft_strchr(map, 'E');
+	check = ft_strchr(str, 'E');
 	if (check)
 		if (ft_strchr(check + 1, 'E'))
 			ft_exit("Invalid map: More than 1 map exit");
 }
 
-int	check_letters(char *map)
+int	check_letters(char *str)
 {
 	int	i;
-	int	count;
+	int	c_count;
 
 	i = 0;
-	count = 0;
-	if (!(ft_strchr(map, 'C')) || !(ft_strchr(map, 'P'))
-		|| !(ft_strchr(map, 'E')) || !(ft_strchr(map, '1')))
+	c_count = 0;
+	if (!(ft_strchr(str, 'C')) || !(ft_strchr(str, 'P'))
+		|| !(ft_strchr(str, 'E')) || !(ft_strchr(str, '1')))
 		ft_exit("Invalid map: Not enough characters");
-	check_pe(map);
-	while (map[i])
+	check_pe(str);
+	while (str[i])
 	{
-		if (!(ft_strchr("01CEP\n", map[i])))
+		if (!(ft_strchr("01CEP\n", str[i])))
 			ft_exit("Invalid map: Not enough characters");
-		if (map[i] == 'C')
-			count++;
+		if (str[i] == 'C')
+			c_count++;
 		i++;
 	}
-	return (count);
+	return (c_count);
 }

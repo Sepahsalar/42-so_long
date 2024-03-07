@@ -6,77 +6,79 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 18:02:59 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:40:58 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static t_line	*check_rectangular(char **total_lines)
+static t_map	*check_rectangular(char **total_lines)
 {
 	int		i;
-	t_line	*line;
+	t_map	*map;
 
 	i = 0;
-	line = malloc(sizeof(t_line));
+	map = malloc(sizeof(t_map));
 	while (total_lines[i + 1])
 	{
-		line->width = ft_strlen(total_lines[i]);
-		if (line->width != ft_strlen(total_lines[i + 1]))
+		map->line_width = ft_strlen(total_lines[i]);
+		if (map->line_width != ft_strlen(total_lines[i + 1]))
 			ft_exit("Invalid map: Not rectangular");
 		i++;
 	}
-	line->width = ft_strlen(total_lines[i]);
-	line->count = i + 1;
-	if (line->count <= 0 || line->width <= 0)
+	map->line_width = ft_strlen(total_lines[i]);
+	map->line_count = i + 1;
+	if (map->line_count <= 0 || map->line_width <= 0)
 		ft_exit("Invalid map");
-	return (line);
+	return (map);
 }
 
-static void	check_walls(char **total_lines, t_line *line)
+static void	check_walls(char **total_lines, t_map *map)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < line->width)
+	while (i < map->line_width)
 	{
-		if (total_lines[0][i] != '1' || total_lines[line->count - 1][i] != '1')
+		if (total_lines[0][i] != '1'
+			|| total_lines[map->line_count - 1][i] != '1')
 			ft_exit("Invalid map: Not surrounded with walls");
 		i++;
 	}
 	i = 0;
 	while (total_lines[i])
 	{
-		if (total_lines[i][0] != '1' || total_lines[i][line->width - 1] != '1')
+		if (total_lines[i][0] != '1'
+			|| total_lines[i][map->line_width - 1] != '1')
 			ft_exit("Invalid map: Not surrounded with walls");
 		i++;
 	}
 }
-//remember to free memory
-int	check_args(char *argv)
+
+t_map	*check_args(char *argv)
 {
 	int		fd;
-	char	*map;
+	char	*str;
 	char	**total_lines;
-	int		collectible_count;
-	t_line	*line;
+	t_map	*map;
 
 	check_extension(argv, ".ber");
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		ft_exit("Opening file failed");
-	map = ft_read(fd);
-	if (!map)
+	str = ft_read(fd);
+	if (!str)
 		ft_exit("Empty map");
-	total_lines = ft_split(map, '\n');
+	total_lines = ft_split(str, '\n');
 	if (!total_lines)
 		ft_exit("Invalid map");
-	line = check_rectangular(total_lines);
-	if (!line)
+	map = check_rectangular(total_lines);
+	if (!map)
 		ft_exit("Allocating memory failed");
-	collectible_count = check_letters(map);
-	check_walls(total_lines, line);
-	check_valid_path(total_lines, line);
+	map->c_count = check_letters(str);
+	check_walls(total_lines, map);
+	check_valid_path(total_lines, map);
+	ft_free(total_lines);
 	close(fd);
-	return (collectible_count);
+	return (map);
 }

@@ -6,13 +6,24 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 17:53:01 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:55:18 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// check norminette for mlx42 functions
+void	ft_free(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
 
 void	ft_exit(char *message)
 {
@@ -23,11 +34,14 @@ void	ft_exit(char *message)
 
 int	main(int argc, char **argv)
 {
-	int		c_count;
+	mlx_t	*window;
+	t_map	*map;
 
 	if (argc != 2)
 		ft_exit("Wrong number of arguments!\nEx: ./so_long map.ber");
-	c_count = check_args(argv[1]);
-	
+	map = check_args(argv[1]);
+	// I should grab the size of window here
+	window = mlx_init(map->line_width, map->line_count, argv[0], true);
+	mlx_loop(window);
 	return (0);
 }

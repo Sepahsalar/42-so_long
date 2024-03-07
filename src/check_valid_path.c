@@ -6,14 +6,14 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:47:18 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 18:30:29 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:58:29 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-#include <stdio.h> //delete this
+// #include <stdio.h> //delete this
 
-static t_loc	find_location(char **total_lines, t_line *line, char c)
+static t_loc	find_location(char **total_lines, t_map *map, char c)
 {
 	int		i;
 	size_t	j;
@@ -21,10 +21,10 @@ static t_loc	find_location(char **total_lines, t_line *line, char c)
 
 	i = 1;
 	j = 1;
-	while (i < line->count)
+	while (i < (map->line_count - 1))
 	{
 		j = 1;
-		while (j < line->width)
+		while (j < (map->line_width - 1))
 		{
 			if (total_lines[i][j] == c)
 			{
@@ -51,44 +51,43 @@ static void	fill_map(char **total_lines, t_loc size, t_loc cur, char check)
 	fill_map(total_lines, size, (t_loc){cur.x, cur.y - 1}, check);
 }
 
-void	print_map(char **a, t_line *line)
-{
-	int		i;
-	size_t	j;
+// void	print_map(char **a, t_map *map)
+// {
+// 	int		i;
+// 	size_t	j;
 
-	i = 0;
-	j = 0;
-	while (i < line->count)
-	{
-		j = 0;
-		while (j < line->width)
-		{
-			printf("%c ", a[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	printf("\n");
-}
+// 	i = 0;
+// 	j = 0;
+// 	while (i < map->line_count)
+// 	{
+// 		j = 0;
+// 		while (j < map->line_width)
+// 		{
+// 			printf("%c ", a[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// 	printf("\n");
+// }
 
-//use flood fill, change every 0, c, e to t and then 
-//at the end i should check are there any c or e remained or not
-void	check_valid_path(char **total_lines, t_line *line)
+void	check_valid_path(char **total_lines, t_map *map)
 {
 	t_loc	p_loc;
 	t_loc	e_loc;
 	t_loc	c_loc;
 	t_loc	size;
 
-	size.x = line->width;
-	size.y = line->count;
-	p_loc = find_location(total_lines, line, 'P');
-	// print_map(total_lines, line);
+	size.x = map->line_width;
+	size.y = map->line_count;
+	p_loc = find_location(total_lines, map, 'P');
 	fill_map(total_lines, size, p_loc, '1');
-	// print_map(total_lines, line);
-	e_loc = find_location(total_lines, line, 'E');
-	c_loc = find_location(total_lines, line, 'C');
-	if (e_loc.y || c_loc.y)
+	e_loc = find_location(total_lines, map, 'E');
+	c_loc = find_location(total_lines, map, 'C');
+	if ((e_loc.x < (map->line_width - 1) && e_loc.x > 0)
+		|| (e_loc.y < (map->line_count - 1) && e_loc.y > 0)
+		|| (c_loc.x < (map->line_width - 1) && c_loc.x > 0)
+		|| (c_loc.y < (map->line_count - 1) && c_loc.y > 0))
 		ft_exit("Invalid map: No valid path");
 }

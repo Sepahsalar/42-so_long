@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 17:53:31 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:18:48 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,27 @@
 # include "../lib/libft/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
-typedef struct s_line
+typedef struct s_map
 {
-	size_t	width;
-	int		count;
-}			t_line;
+	size_t	line_width;
+	int		line_count;
+	int		c_count;
+}			t_map;
 
 typedef struct s_loc
 {
-	int	x;
-	int	y;
-}		t_loc;
+	size_t	x;
+	int		y;
+}			t_loc;
 
-int		check_args(char *argv);
+t_map	*check_args(char *argv);
 void	ft_exit(char *message);
 char	*gnl_strjoin(char *s1, char *s2);
 char	*ft_read(int fd);
-void	check_extension(char *map, char *extension);
-void	check_pe(char *map);
-int		check_letters(char *map);
-void	check_valid_path(char **total_lines, t_line *line);
+void	check_extension(char *str, char *extension);
+void	check_pe(char *str);
+int		check_letters(char *str);
+void	check_valid_path(char **total_lines, t_map *map);
+void	ft_free(char **array);
 
 #endif
