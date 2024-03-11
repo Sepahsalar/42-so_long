@@ -6,9 +6,12 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/07 16:18:07 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/11 11:22:04 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#Add explanation about installing cmake and glfw
+#Fix that home address
 
 NAME = so_long
 CFLAGS = -Wall -Wextra -Werror
