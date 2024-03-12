@@ -6,7 +6,7 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/07 16:18:07 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/08 10:34:11 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ LIBS_FLAGS = ${LIBMLX}/build/libmlx42.a -ldl -pthread -lm -L/Users/${USER}/.brew
 # form git mlx42, other flags (for macos) = -lglfw(3) -framework Cocoa -framework OpenGL -framework IOKit
 # remember to delete this
 DEBUG_FLAG = -DDEBUG=1
-SRCS = src/so_long.c src/check_args.c src/so_long_utils.c src/ft_read.c src/check_valid_path.c
+SRCS = src/so_long.c src/check_args.c src/so_long_utils.c src/ft_read.c \
+		src/check_valid_path.c src/ft_cal_size.c
 OBJ = ${SRCS:.c=.o}
 
 %.o: %.c

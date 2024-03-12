@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/07 17:55:18 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:31:56 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 		ft_exit("Wrong number of arguments!\nEx: ./so_long map.ber");
 	map = check_args(argv[1]);
 	// I should grab the size of window here
+	ft_cal_size(map);
 	window = mlx_init(map->line_width, map->line_count, argv[0], true);
 	mlx_loop(window);
 	return (0);
