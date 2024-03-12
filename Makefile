@@ -6,15 +6,19 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/08 10:34:11 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/12 10:36:17 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+#Add explanation about installing cmake and glfw
+#Fix that home address
 
 NAME = so_long
 CFLAGS = -Wall -Wextra -Werror
 LIBMLX = lib/MLX42
 LIBFT = lib/libft
-
+# USER = alireza
 HEADERS	= -I include -I ${LIBMLX}/include
 LIBS_FLAGS = ${LIBMLX}/build/libmlx42.a -ldl -pthread -lm -L/Users/${USER}/.brew/Cellar/glfw/3.4/lib -lglfw -L${LIBFT} -lft
 # MORE_FLAGS = -g -Ofast -framework OpenGL -framework AppKit
