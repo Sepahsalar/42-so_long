@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:36:40 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/07 15:24:53 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/12 10:55:54 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,15 @@ char	*gnl_strjoin(char *s1, char *s2)
 
 void	check_extension(char *str, char *extension)
 {
-	size_t	ext_len;
 	size_t	map_len;
 
-	map_len = ft_strlen(str) - 1;
-	ext_len = ft_strlen(extension) - 1;
-	while (ext_len > 0)
-	{
-		if (str[map_len] != extension[ext_len])
-			ft_exit("Wrong file extension\nEx: map.ber");
-		map_len--;
-		ext_len--;
-	}
+	map_len = ft_strlen(str);
+	if (map_len <= 4)
+		ft_exit("Wrong file extension\nEx: map.ber");
+	str = str + map_len - 4;
+	if (ft_strncmp(str, extension, 4))
+		ft_exit("Wrong file extension\nEx: map.ber");
+
 }
 
 void	check_pe(char *str)

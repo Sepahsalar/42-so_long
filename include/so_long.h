@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/08 10:33:37 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:33:19 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include <fcntl.h>
+# include <math.h>
 # include "../lib/libft/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
@@ -22,6 +23,10 @@ typedef struct s_map
 	size_t	line_width;
 	int		line_count;
 	int		c_count;
+	int		image_width;
+	int		image_height;
+	int		window_width;
+	int		window_height;
 }			t_map;
 
 typedef struct s_loc
@@ -39,6 +44,6 @@ void	check_pe(char *str);
 int		check_letters(char *str);
 void	check_valid_path(char **total_lines, t_map *map);
 void	ft_free(char **array);
-void	ft_cal_size(t_map *map);
+void	cal_size(t_map *map);
 
 #endif
