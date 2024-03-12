@@ -6,7 +6,7 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/12 14:31:16 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/12 15:27:18 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ LIBS_FLAGS = ${LIBMLX}/build/libmlx42.a -ldl -pthread -lm -L/Users/${USER}/.brew
 # remember to delete this
 DEBUG_FLAG = -DDEBUG=1
 SRCS = src/so_long.c src/check_args.c src/so_long_utils.c src/ft_read.c \
-		src/check_valid_path.c src/cal_size.c src/create_elements.c
+		src/check_valid_path.c src/cal_size.c src/create_elements.c \
+		src/create_instance.c
 OBJ = ${SRCS:.c=.o}
 
 %.o: %.c

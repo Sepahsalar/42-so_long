@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/12 13:55:49 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:20:45 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	ft_exit(char *message)
 
 int	main(int argc, char **argv)
 {
-	mlx_t		*window;
-	t_map		*map;
-	t_elements	*elements;
+	mlx_t	*window;
+	t_map	*map;
+	t_elem	*elements;
 
 	if (argc != 2)
 		ft_exit("Wrong number of arguments!\nEx: ./so_long map.ber");
@@ -48,6 +48,8 @@ int	main(int argc, char **argv)
 	elements = create_elements(window, map);
 	if (!elements)
 		ft_exit("Allocating memory failed");
+	create_game(window, elements, map, argv[1]);
+	//need sth for movement count, like map to instance
 	
 	mlx_loop(window);
 	return (0);

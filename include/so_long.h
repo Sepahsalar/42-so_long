@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/12 14:00:37 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:29:06 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include "../lib/libft/libft.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 
-typedef struct s_elements
+typedef struct s_elem
 {
 	mlx_image_t	*empty;
 	mlx_image_t	*wall;
 	mlx_image_t	*collect;
 	mlx_image_t	*exit;
 	mlx_image_t	*player;
-}				t_elements;
+}				t_elem;
 
 typedef struct s_map
 {
@@ -44,16 +44,17 @@ typedef struct s_loc
 	int		y;
 }			t_loc;
 
-t_map		*check_args(char *argv);
-void		ft_exit(char *message);
-char		*gnl_strjoin(char *s1, char *s2);
-char		*ft_read(int fd);
-void		check_extension(char *str, char *extension);
-void		check_pe(char *str);
-int			check_letters(char *str);
-void		check_valid_path(char **total_lines, t_map *map);
-void		ft_free(char **array);
-void		cal_size(t_map *map);
-t_elements	*create_elements(mlx_t *window, t_map *map);
+t_map	*check_args(char *argv);
+void	ft_exit(char *message);
+char	*gnl_strjoin(char *s1, char *s2);
+char	*ft_read(int fd);
+void	check_extension(char *str, char *extension);
+void	check_pe(char *str);
+int		check_letters(char *str);
+void	check_valid_path(char **total_lines, t_map *map);
+void	ft_free(char **array);
+void	cal_size(t_map *map);
+t_elem	*create_elements(mlx_t *window, t_map *map);
+void	create_instance(mlx_t *window, t_elem *elements, t_map *map, char *arg);
 
 #endif

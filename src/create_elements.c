@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:45:45 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/12 15:03:47 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:21:10 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ static mlx_image_t	*background(mlx_t *window, int w_width, int w_height)
 	return (bg);
 }
 
-t_elements	*create_elements(mlx_t *window, t_map *map)
+t_elem	*create_elements(mlx_t *window, t_map *map)
 {
-	t_elements	*elements;
+	t_elem	*elements;
 
-	elements = malloc(sizeof(t_elements));
+	elements = malloc(sizeof(t_elem));
 	if (!elements)
 	{
 		mlx_terminate(window);
