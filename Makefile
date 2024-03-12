@@ -6,7 +6,7 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/12 11:20:15 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/12 14:31:16 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,14 @@ CFLAGS = -Wall -Wextra -Werror
 LIBMLX = lib/MLX42
 LIBFT = lib/libft
 # USER = alireza
-HEADERS	= -I include -I ${LIBMLX}/include
+HEADERS	= -I ./include -I ${LIBMLX}/include
 LIBS_FLAGS = ${LIBMLX}/build/libmlx42.a -ldl -pthread -lm -L/Users/${USER}/.brew/Cellar/glfw/3.4/lib -lglfw -L${LIBFT} -lft
 # MORE_FLAGS = -g -Ofast -framework OpenGL -framework AppKit
 # form git mlx42, other flags (for macos) = -lglfw(3) -framework Cocoa -framework OpenGL -framework IOKit
 # remember to delete this
 DEBUG_FLAG = -DDEBUG=1
 SRCS = src/so_long.c src/check_args.c src/so_long_utils.c src/ft_read.c \
-		src/check_valid_path.c src/cal_size.c
+		src/check_valid_path.c src/cal_size.c src/create_elements.c
 OBJ = ${SRCS:.c=.o}
 
 %.o: %.c

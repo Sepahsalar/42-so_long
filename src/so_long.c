@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/12 11:20:26 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:55:49 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,21 @@ void	ft_exit(char *message)
 
 int	main(int argc, char **argv)
 {
-	mlx_t	*window;
-	t_map	*map;
+	mlx_t		*window;
+	t_map		*map;
+	t_elements	*elements;
 
 	if (argc != 2)
 		ft_exit("Wrong number of arguments!\nEx: ./so_long map.ber");
 	map = check_args(argv[1]);
 	cal_size(map);
-	window = mlx_init(map->line_width, map->line_count, argv[0], true);
+	window = mlx_init(map->window_width, map->window_height, argv[0], false);
+	if (!window)
+		ft_exit("Initializing window failed");
+	elements = create_elements(window, map);
+	if (!elements)
+		ft_exit("Allocating memory failed");
+	
 	mlx_loop(window);
 	return (0);
 }
