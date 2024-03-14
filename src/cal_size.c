@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:32:52 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/14 18:13:11 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:42:00 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	cal_size(t_map *map)
 		ft_exit("Too big height for this monitor");
 	if (ratio_width < ratio)
 		ratio = ratio_width;
-	if (ratio > 100)
-		ratio = 100;
+	if (ratio > 80)
+		ratio = 80;
 	cal_size_helper(map, ratio);
 }
