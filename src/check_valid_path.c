@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:47:18 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/07 17:58:29 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:07:38 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static void	fill_map(char **total_lines, t_loc size, t_loc cur, char check)
 		|| total_lines[cur.y][cur.x] == 'F')
 		return ;
 	total_lines[cur.y][cur.x] = 'F';
-	fill_map(total_lines, size, (t_loc){cur.x + 1, cur.y}, check);
-	fill_map(total_lines, size, (t_loc){cur.x - 1, cur.y}, check);
-	fill_map(total_lines, size, (t_loc){cur.x, cur.y + 1}, check);
-	fill_map(total_lines, size, (t_loc){cur.x, cur.y - 1}, check);
+	fill_map(total_lines, size, (t_loc){cur.x + 1, cur.y, cur.c}, check);
+	fill_map(total_lines, size, (t_loc){cur.x - 1, cur.y, cur.c}, check);
+	fill_map(total_lines, size, (t_loc){cur.x, cur.y + 1, cur.c}, check);
+	fill_map(total_lines, size, (t_loc){cur.x, cur.y - 1, cur.c}, check);
 }
 
 // void	print_map(char **a, t_map *map)

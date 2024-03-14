@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/12 15:29:06 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/14 17:50:43 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_loc
 {
 	size_t	x;
 	int		y;
+	char	c;
 }			t_loc;
 
 t_map	*check_args(char *argv);

@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/12 15:20:45 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/14 18:09:39 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	elements = create_elements(window, map);
 	if (!elements)
 		ft_exit("Allocating memory failed");
-	create_game(window, elements, map, argv[1]);
+	create_instance(window, elements, map, argv[1]);
 	//need sth for movement count, like map to instance
 	
 	mlx_loop(window);
