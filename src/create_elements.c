@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:45:45 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/14 19:55:02 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/14 21:58:27 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static mlx_image_t	*background(mlx_t *window, int w_width, int w_height)
 		j = 0;
 		while (j < w_height)
 		{
-			mlx_put_pixel(bg, i, j, color(15, 125, 205, 255));
+			mlx_put_pixel(bg, i, j, color(145, 160, 170, 255));
 			j++;
 		}
 		i++;
