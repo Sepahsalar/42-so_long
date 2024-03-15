@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:41:14 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/15 15:27:19 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:00:15 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	move(void *param, char c)
 		(*all->move_count)++;
 		ft_printf("Movements: %d\n", (*all->move_count));
 		move_con(all, c);
-		// check_collectible(all);
+		check_collectible(all);
 		// check_exit(all);
 	}
 }

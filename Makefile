@@ -6,12 +6,12 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/15 15:30:40 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/15 16:12:43 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBMLX = lib/MLX42
 LIBFT = lib/libft
 LIB_BREW = /Users/${USER}/.brew/Cellar/glfw/3.4/lib
@@ -26,7 +26,7 @@ LIBS_FLAGS = ${LIBFT_FLAGS} ${LMX_FLAGS}
 # DEBUG_FLAG = -DDEBUG=1
 SRCS = src/so_long.c src/check_args.c src/so_long_utils.c src/ft_read.c \
 		src/check_valid_path.c src/cal_size.c src/create_elements.c \
-		src/create_instance.c src/press_key.c
+		src/create_instance.c src/press_key.c src/check_collectible.c 
 OBJS = ${SRCS:.c=.o}
 
 %.o: %.c

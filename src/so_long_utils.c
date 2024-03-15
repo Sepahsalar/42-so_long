@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:36:40 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/12 10:55:54 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:37:03 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,14 @@ void	check_pe(char *str)
 			ft_exit("Invalid map: More than 1 map exit");
 }
 
-int	check_letters(char *str)
+// int	check_letters(char *str)
+void	check_letters(char *str)
 {
 	int	i;
-	int	c_count;
+	// int	c_count;
 
 	i = 0;
-	c_count = 0;
+	// c_count = 0;
 	if (!(ft_strchr(str, 'C')) || !(ft_strchr(str, 'P'))
 		|| !(ft_strchr(str, 'E')) || !(ft_strchr(str, '1')))
 		ft_exit("Invalid map: Not enough characters");
@@ -96,9 +97,9 @@ int	check_letters(char *str)
 	{
 		if (!(ft_strchr("01CEP\n", str[i])))
 			ft_exit("Invalid map: Not enough characters");
-		if (str[i] == 'C')
-			c_count++;
+		// if (str[i] == 'C')
+		// 	c_count++;
 		i++;
 	}
-	return (c_count);
+	// return (c_count);
 }
