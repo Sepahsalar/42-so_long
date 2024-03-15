@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:45:45 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/14 22:44:59 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/15 09:36:05 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static mlx_texture_t	*load_image(mlx_t *window, char c)
 	mlx_texture_t	*texture;
 
 	if (c == '1')
-		texture = mlx_load_png("./textures/wall.png");
+		texture = mlx_load_png("./textures/wall5.png");
 	else if (c == 'P')
 		texture = mlx_load_png("./textures/player.png");
 	else if (c == 'C')

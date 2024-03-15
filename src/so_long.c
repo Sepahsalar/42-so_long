@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/14 18:09:39 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:23:21 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,28 @@ void	ft_exit(char *message)
 
 int	main(int argc, char **argv)
 {
-	mlx_t	*window;
-	t_map	*map;
-	t_elem	*elements;
+	t_all_var	all;
+	int			count;
 
+	count = 0;
+	all.move_count = &count;
 	if (argc != 2)
 		ft_exit("Wrong number of arguments!\nEx: ./so_long map.ber");
-	map = check_args(argv[1]);
-	cal_size(map);
-	window = mlx_init(map->window_width, map->window_height, argv[0], false);
-	if (!window)
+	all.map = check_args(argv[1]);
+	cal_size(all.map);
+	all.window = mlx_init(all.map->window_width, all.map->window_height,
+			argv[0], false);
+	if (!all.window)
 		ft_exit("Initializing window failed");
-	elements = create_elements(window, map);
-	if (!elements)
+	all.elems = create_elements(all.window, all.map);
+	if (!all.elems)
+	{
+		mlx_terminate(all.window);
 		ft_exit("Allocating memory failed");
-	create_instance(window, elements, map, argv[1]);
-	//need sth for movement count, like map to instance
-	
-	mlx_loop(window);
+	}
+	create_instance(all.window, all.elems, all.map, argv[1]);
+	mlx_key_hook(all.window, &press_key, &all);
+	mlx_loop(all.window);
+	//handle terminate and freeing stuff
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/14 17:50:43 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:37:40 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,15 @@
 # include <fcntl.h>
 # include <math.h>
 # include "../lib/libft/libft.h"
+# include "../lib/ft_printf/ft_printf.h"
 # include "../lib/MLX42/include/MLX42/MLX42.h"
+
+typedef struct s_loc
+{
+	size_t	x;
+	int		y;
+	char	c;
+}			t_loc;
 
 typedef struct s_elem
 {
@@ -25,6 +33,8 @@ typedef struct s_elem
 	mlx_image_t	*collect;
 	mlx_image_t	*exit;
 	mlx_image_t	*player;
+	t_loc		player_loc;
+	t_loc		*collect_loc;
 }				t_elem;
 
 typedef struct s_map
@@ -38,12 +48,13 @@ typedef struct s_map
 	int		window_height;
 }			t_map;
 
-typedef struct s_loc
+typedef struct s_all_var
 {
-	size_t	x;
-	int		y;
-	char	c;
-}			t_loc;
+	mlx_t	*window;
+	t_elem	*elems;
+	t_map	*map;
+	int		*move_count;
+}			t_all_var;
 
 t_map	*check_args(char *argv);
 void	ft_exit(char *message);
@@ -57,5 +68,6 @@ void	ft_free(char **array);
 void	cal_size(t_map *map);
 t_elem	*create_elements(mlx_t *window, t_map *map);
 void	create_instance(mlx_t *window, t_elem *elements, t_map *map, char *arg);
+void	press_key(mlx_key_data_t keydata, void *param);
 
 #endif
