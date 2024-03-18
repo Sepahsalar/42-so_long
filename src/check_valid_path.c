@@ -6,12 +6,11 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:47:18 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/14 18:07:38 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:17:41 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-// #include <stdio.h> //delete this
 
 static t_loc	find_location(char **total_lines, t_map *map, char c)
 {
@@ -72,17 +71,19 @@ static void	fill_map(char **total_lines, t_loc size, t_loc cur, char check)
 // 	printf("\n");
 // }
 
-void	check_valid_path(char **total_lines, t_map *map)
+t_loc	check_valid_path(char **total_lines, t_map *map)
 {
 	t_loc	p_loc;
 	t_loc	e_loc;
 	t_loc	c_loc;
 	t_loc	size;
+	t_loc	temp;
 
 	size.x = map->line_width;
 	size.y = map->line_count;
 	p_loc = find_location(total_lines, map, 'P');
-	fill_map(total_lines, size, p_loc, '1');
+	temp = p_loc;
+	fill_map(total_lines, size, temp, '1');
 	e_loc = find_location(total_lines, map, 'E');
 	c_loc = find_location(total_lines, map, 'C');
 	if ((e_loc.x < (map->line_width - 1) && e_loc.x > 0)
@@ -90,4 +91,5 @@ void	check_valid_path(char **total_lines, t_map *map)
 		|| (c_loc.x < (map->line_width - 1) && c_loc.x > 0)
 		|| (c_loc.y < (map->line_count - 1) && c_loc.y > 0))
 		ft_exit("Invalid map: No valid path");
+	return (p_loc);
 }

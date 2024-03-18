@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 11:32:56 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:17:00 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,15 @@ static void	check_walls(char **total_lines, t_map *map)
 	}
 }
 
-t_map	*check_args(char *argv)
+t_all_var	check_args(char *argv)
 {
 	int		fd;
 	char	*str;
 	char	**total_lines;
-	t_map	*map;
+	// t_map	*map;
+	t_all_var	all; //maybe it should be initialized
 
+	// all = (t_all_var){0, 0, 0, 0};
 	check_extension(argv, ".ber");
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
@@ -72,13 +74,13 @@ t_map	*check_args(char *argv)
 	total_lines = ft_split(str, '\n');
 	if (!total_lines)
 		ft_exit("Invalid map");
-	map = check_rectangular(total_lines);
-	if (!map)
+	all.map = check_rectangular(total_lines);
+	if (!all.map)
 		ft_exit("Allocating memory failed");
 	check_letters(str);
-	check_walls(total_lines, map);
-	check_valid_path(total_lines, map);
+	check_walls(total_lines, all.map);
+	all.elems->player_loc = check_valid_path(total_lines, all.map);
 	ft_free(total_lines);
 	close(fd);
-	return (map);
+	return (all);
 }

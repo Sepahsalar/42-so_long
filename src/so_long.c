@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/15 15:23:21 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 19:43:40 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	main(int argc, char **argv)
 	all.move_count = &count;
 	if (argc != 2)
 		ft_exit("Wrong number of arguments!\nEx: ./so_long map.ber");
-	all.map = check_args(argv[1]);
+	all = check_args(argv[1]);
 	cal_size(all.map);
 	all.window = mlx_init(all.map->window_width, all.map->window_height,
 			argv[0], false);
 	if (!all.window)
 		ft_exit("Initializing window failed");
-	all.elems = create_elements(all.window, all.map);
+	all.elems = create_elements(all.window, all.map, argv[1]);
 	if (!all.elems)
 	{
 		mlx_terminate(all.window);

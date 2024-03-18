@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 11:33:27 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:03:31 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,21 @@ typedef struct s_all_var
 	int		*move_count;
 }			t_all_var;
 
-t_map	*check_args(char *argv);
-void	ft_exit(char *message);
-char	*gnl_strjoin(char *s1, char *s2);
-char	*ft_read(int fd);
-void	check_extension(char *str, char *extension);
-void	check_pe(char *str);
-void	check_letters(char *str);
-void	check_valid_path(char **total_lines, t_map *map);
-void	ft_free(char **array);
-void	cal_size(t_map *map);
-t_elem	*create_elements(mlx_t *window, t_map *map);
-void	create_instance(mlx_t *window, t_elem *elements, t_map *map, char *arg);
-void	press_key(mlx_key_data_t keydata, void *param);
-void	check_collectible(t_all_var	*all);
+t_all_var		check_args(char *argv); //check if the return should be pointer
+void			ft_exit(char *message);
+char			*gnl_strjoin(char *s1, char *s2);
+char			*ft_read(int fd);
+void			check_extension(char *str, char *extension);
+void			check_pe(char *str);
+void			check_letters(char *str);
+t_loc			check_valid_path(char **total_lines, t_map *map);
+void			ft_free(char **array);
+void			cal_size(t_map *map);
+t_elem			*create_elements(mlx_t *window, t_map *map, char *argv);
+void			create_instance(mlx_t *window, t_elem *elements,
+					t_map *map, char *arg);
+void			press_key(mlx_key_data_t keydata, void *param);
+void			check_collectible(t_all_var	*all);
+t_collect_loc	*collectible_list(char *argv, t_collect_loc *first);
 
 #endif
