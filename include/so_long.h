@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/15 16:00:57 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 11:33:27 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ char	*gnl_strjoin(char *s1, char *s2);
 char	*ft_read(int fd);
 void	check_extension(char *str, char *extension);
 void	check_pe(char *str);
-// int		check_letters(char *str);
 void	check_letters(char *str);
 void	check_valid_path(char **total_lines, t_map *map);
 void	ft_free(char **array);

@@ -6,7 +6,7 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/15 16:12:43 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/18 11:01:43 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ LIBFT_FLAGS = -L${LIBFT} -L${LIBFTPRINTF} -lft -lftprintf
 LMX_FLAGS = -L${LIBMLX}/build -L${LIB_BREW} -lmlx42 -ldl -pthread -lglfw -lm
 HEADERS	= -I ./include -I ${LIBMLX}/include
 LIBS_FLAGS = ${LIBFT_FLAGS} ${LMX_FLAGS}
+
+USER = ${shell whoami}
 # MORE_FLAGS = -g -Ofast -framework OpenGL -framework AppKit
 # form git mlx42, other flags (for macos) = -lglfw(3) -framework Cocoa -framework OpenGL -framework IOKit
 # remember to delete this
