@@ -6,7 +6,7 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/18 11:01:43 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/18 20:41:22 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ USER = ${shell whoami}
 # remember to delete this
 # DEBUG_FLAG = -DDEBUG=1
 SRCS = src/so_long.c src/check_args.c src/so_long_utils.c src/ft_read.c \
-		src/check_valid_path.c src/cal_size.c src/create_elements.c \
+		src/check_valid_path.c src/cal_size.c src/create_elements.c src/check_exit.c \
 		src/create_instance.c src/press_key.c src/check_collectible.c 
 OBJS = ${SRCS:.c=.o}
 

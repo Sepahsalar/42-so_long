@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 20:17:00 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:36:59 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ static void	check_walls(char **total_lines, t_map *map)
 
 t_all_var	check_args(char *argv)
 {
-	int		fd;
-	char	*str;
-	char	**total_lines;
-	// t_map	*map;
+	int			fd;
+	char		*str;
+	char		**total_lines;
 	t_all_var	all; //maybe it should be initialized
 
 	// all = (t_all_var){0, 0, 0, 0};

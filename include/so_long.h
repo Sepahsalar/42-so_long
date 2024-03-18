@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 20:03:31 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:56:21 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ void			create_instance(mlx_t *window, t_elem *elements,
 void			press_key(mlx_key_data_t keydata, void *param);
 void			check_collectible(t_all_var	*all);
 t_collect_loc	*collectible_list(char *argv, t_collect_loc *first);
+void			check_exit(t_all_var *all);
+void			free_collectible_list(t_collect_loc *first);
 
 #endif

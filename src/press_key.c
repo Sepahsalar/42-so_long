@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:41:14 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/15 16:00:15 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 20:58:00 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	move(void *param, char c)
 		ft_printf("Movements: %d\n", (*all->move_count));
 		move_con(all, c);
 		check_collectible(all);
-		// check_exit(all);
+		check_exit(all);
 	}
 }
 
@@ -102,4 +102,13 @@ void	press_key(mlx_key_data_t keydata, void *param)
 	else if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
 		&& keydata.action == MLX_PRESS)
 		move(param, 'R');
+	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
+		mlx_terminate(((t_all_var *)param)->window);
+		free_collectible_list(((t_all_var *)param)->elems->collect_loc);
+		// free(all->elems->collect_loc); //check if it is needed for player
+		free(((t_all_var *)param)->elems);
+		mlx_terminate(((t_all_var *)param)->window);
+		exit (EXIT_SUCCESS);
+	}
 }
