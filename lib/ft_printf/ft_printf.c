@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:23:51 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/15 11:52:15 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/18 11:03:28 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,13 @@ static int	ft_putprintf(va_list ap, const char *format, char *s, int len)
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int		i;
 	int		len;
 	char	*s;
-	int		temp;
 
 	if (!format)
 		return (-1);
-	i = 0;
 	len = 0;
 	s = "cspdiuxX%";
-	temp = 0;
 	va_start(ap, format);
 	len = ft_putprintf(ap, format, s, len);
 	va_end(ap);
