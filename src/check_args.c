@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 20:36:59 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:16:56 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static t_map	*check_rectangular(char **total_lines)
 {
 	int		i;
 	t_map	*map;
-
+//I should again read map here.
 	i = 0;
 	map = malloc(sizeof(t_map));
 	while (total_lines[i + 1])
@@ -55,14 +55,13 @@ static void	check_walls(char **total_lines, t_map *map)
 	}
 }
 
-t_all_var	check_args(char *argv)
+t_map	*check_args(char *argv)
 {
-	int			fd;
-	char		*str;
-	char		**total_lines;
-	t_all_var	all; //maybe it should be initialized
+	int		fd;
+	char	*str;
+	char	**total_lines;
+	t_map	*map;
 
-	// all = (t_all_var){0, 0, 0, 0};
 	check_extension(argv, ".ber");
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
@@ -73,13 +72,14 @@ t_all_var	check_args(char *argv)
 	total_lines = ft_split(str, '\n');
 	if (!total_lines)
 		ft_exit("Invalid map");
-	all.map = check_rectangular(total_lines);
-	if (!all.map)
+	map = check_rectangular(total_lines);
+	if (!map)
 		ft_exit("Allocating memory failed");
 	check_letters(str);
-	check_walls(total_lines, all.map);
-	all.elems->player_loc = check_valid_path(total_lines, all.map);
+	check_walls(total_lines, map);
+	check_valid_path(total_lines, map);
 	ft_free(total_lines);
+	free(str);
 	close(fd);
-	return (all);
+	return (map);
 }

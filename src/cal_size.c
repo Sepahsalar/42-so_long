@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:32:52 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/14 18:42:00 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:59:12 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	cal_size(t_map *map)
 		ft_exit("Initializing temporary window faild");
 	mlx_get_monitor_size(0, &monitor_width, &monitor_height);
 	mlx_terminate(temp);
-	monitor_width = round(monitor_width * 0.95);
-	monitor_height = round(monitor_height * 0.95);
+	monitor_width = round(monitor_width * 0.9);
+	monitor_height = round(monitor_height * 0.9);
 	ratio_width = monitor_width / map->line_width;
 	if (ratio_width < 10)
 		ft_exit("Too big width for this monitor");

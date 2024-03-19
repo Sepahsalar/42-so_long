@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:45:45 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 19:44:17 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:09:20 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static mlx_texture_t	*load_image(mlx_t *window, char c)
 	if (!texture)
 	{
 		mlx_terminate(window);
-		ft_exit("Allocating memory failed");
+		ft_exit("Loading PNG failed");
 	}
 	return (texture);
 }
@@ -42,7 +42,7 @@ static mlx_image_t	*image(mlx_t *window, int i_width, int i_height, char c)
 	if (!picture)
 	{
 		mlx_terminate(window);
-		ft_exit("Allocating memory failed");
+		ft_exit("Creating image failed");
 	}
 	mlx_delete_texture(texture);
 	if (!mlx_resize_image(picture, i_width, i_height))
@@ -70,7 +70,7 @@ static mlx_image_t	*background(mlx_t *window, int w_width, int w_height)
 	if (!bg)
 	{
 		mlx_terminate(window);
-		ft_exit("Allocating memory failed");
+		ft_exit("Creating background failed");
 	}
 	while (i < w_width)
 	{
@@ -101,7 +101,7 @@ t_elem	*create_elements(mlx_t *window, t_map *map, char *argv)
 	{
 		free(elements);
 		mlx_terminate(window);
-		ft_exit("Allocating memory failed");
+		ft_exit("Creating Collectible list failed");
 	}
 	elements->empty = background(window, map->window_width, map->window_height);
 	elements->wall = image(window, map->image_width, map->image_height, '1');

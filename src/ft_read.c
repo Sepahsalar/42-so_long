@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:48:14 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/06 15:16:42 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:20:17 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*ft_read(int fd)
 		if (!map)
 			ft_exit("Joining failed");
 	}
+	// free(buf);
 	close(fd);
 	return (map);
 }

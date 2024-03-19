@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:58:06 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 20:09:31 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:34:03 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	position_update(t_loc *loc)
 		loc->x++;
 }
 
-static void	collectible_list_read(int fd, t_loc loc, t_collect_loc *first)
+static t_collect_loc	*collect_read(int fd, t_loc loc, t_collect_loc *first)
 {
 	t_collect_loc	*new;
 	t_collect_loc	*old;
@@ -47,6 +47,7 @@ static void	collectible_list_read(int fd, t_loc loc, t_collect_loc *first)
 		}
 		position_update(&loc);
 	}
+	return (first);
 }
 
 t_collect_loc	*collectible_list(char *argv, t_collect_loc *first)
@@ -60,7 +61,7 @@ t_collect_loc	*collectible_list(char *argv, t_collect_loc *first)
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		ft_exit("Opening file failed");
-	collectible_list_read(fd, loc, first);
+	first = collect_read(fd, loc, first);
 	close(fd);
 	return (first);
 }
@@ -72,17 +73,12 @@ static void	change_collect_list(t_collect_loc *collectible, int c_x, int c_y)
 	node = collectible;
 	while (node)
 	{
-		ft_printf("hi3\n");
 		if (((int)(node->x) == c_x) && (node->y == c_y))
 		{
-			ft_printf("hi4\n");
 			node->enabled = 0;
-			ft_printf("hi5\n");
 			break ;
 		}
-		ft_printf("hi6\n");
 		node = node->next;
-		ft_printf("hi7\n");
 	}
 }
 

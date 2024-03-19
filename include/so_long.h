@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 20:56:21 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:16:39 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_map
 {
 	size_t	line_width;
 	int		line_count;
-	int		c_count;
 	int		image_width;
 	int		image_height;
 	int		window_width;
@@ -64,14 +63,14 @@ typedef struct s_all_var
 	int		*move_count;
 }			t_all_var;
 
-t_all_var		check_args(char *argv); //check if the return should be pointer
+t_map			*check_args(char *argv); //check if the return should be pointer
 void			ft_exit(char *message);
 char			*gnl_strjoin(char *s1, char *s2);
 char			*ft_read(int fd);
 void			check_extension(char *str, char *extension);
 void			check_pe(char *str);
 void			check_letters(char *str);
-t_loc			check_valid_path(char **total_lines, t_map *map);
+void			check_valid_path(char **total_lines, t_map *map);
 void			ft_free(char **array);
 void			cal_size(t_map *map);
 t_elem			*create_elements(mlx_t *window, t_map *map, char *argv);

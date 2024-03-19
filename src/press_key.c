@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:41:14 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 20:58:00 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:33:23 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,8 @@ void	press_key(mlx_key_data_t keydata, void *param)
 		move(param, 'R');
 	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		mlx_terminate(((t_all_var *)param)->window);
 		free_collectible_list(((t_all_var *)param)->elems->collect_loc);
-		// free(all->elems->collect_loc); //check if it is needed for player
+		// free(((t_all_var *)param)->elems->collect_loc); //check if it is needed for player
 		free(((t_all_var *)param)->elems);
 		mlx_terminate(((t_all_var *)param)->window);
 		exit (EXIT_SUCCESS);
