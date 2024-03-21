@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/21 13:26:06 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:32:15 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static t_map	*check_rectangular(char *argv)
 	t_map	*map;
 	char	*current_line;
 	char	*next_line;
-
+// It would be better to add a function to count lines and
+// change the condition of while connected to the number of lines
 	count = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
@@ -48,15 +49,15 @@ static t_map	*check_rectangular(char *argv)
 		}
 		count++;
 		next_line = get_next_line(fd);
-		// if (ft_strchr(next_line, '\0'))
-		ft_printf("line: %s\n", next_line);
+		// ft_printf("line: %s\n", next_line);
 	}
 	close(fd);
-	// if (next)
 	map->line_width = ft_strlen_con(current_line);
 	map->line_count = count + 1;
 	if (map->line_count <= 0 || map->line_width <= 0)
 		ft_exit("Invalid map");
+	free(current_line);
+	free(next_line);
 	return (map);
 }
 
