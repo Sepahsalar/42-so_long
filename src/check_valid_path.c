@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:47:18 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 12:06:05 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:19:00 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	check_valid_path(char **total_lines, t_map *map)
 	size.x = map->line_width;
 	size.y = map->line_count;
 	p_loc = find_location(total_lines, map, 'P');
+	// print_map(total_lines, map);
 	fill_map(total_lines, size, p_loc, '1');
 	e_loc = find_character(total_lines, map, 'E');
 	c_loc = find_character(total_lines, map, 'C');

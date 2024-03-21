@@ -6,28 +6,55 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 14:16:56 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:26:06 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static t_map	*check_rectangular(char **total_lines)
+static size_t	ft_strlen_con(char *line)
 {
-	int		i;
+	size_t	width;
+
+	width = 0;
+	if (ft_strchr(line, '\n'))
+		width = ft_strlen(line) - 1;
+	else
+		width = ft_strlen(line);
+	return (width);
+}
+
+static t_map	*check_rectangular(char *argv)
+{
+	int		count;
+	int		fd;
 	t_map	*map;
-//I should again read map here.
-	i = 0;
+	char	*current_line;
+	char	*next_line;
+
+	count = 0;
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+		ft_exit("Opening file failed");
 	map = malloc(sizeof(t_map));
-	while (total_lines[i + 1])
+	current_line = get_next_line(fd);
+	next_line = get_next_line(fd);
+	while (next_line != NULL)
 	{
-		map->line_width = ft_strlen(total_lines[i]);
-		if (map->line_width != ft_strlen(total_lines[i + 1]))
+		if (ft_strlen_con(current_line) != ft_strlen_con(next_line))
+		{
+			close(fd);
 			ft_exit("Invalid map: Not rectangular");
-		i++;
+		}
+		count++;
+		next_line = get_next_line(fd);
+		// if (ft_strchr(next_line, '\0'))
+		ft_printf("line: %s\n", next_line);
 	}
-	map->line_width = ft_strlen(total_lines[i]);
-	map->line_count = i + 1;
+	close(fd);
+	// if (next)
+	map->line_width = ft_strlen_con(current_line);
+	map->line_count = count + 1;
 	if (map->line_count <= 0 || map->line_width <= 0)
 		ft_exit("Invalid map");
 	return (map);
@@ -55,6 +82,16 @@ static void	check_walls(char **total_lines, t_map *map)
 	}
 }
 
+// char	*read_file()
+// {
+// 	fd = open(argv, O_RDONLY);
+// 	if (fd == -1)
+// 		ft_exit("Opening file failed");
+// 	str = ft_read(fd);
+// 	if (!str)
+// 		ft_exit("Empty map");
+// }
+
 t_map	*check_args(char *argv)
 {
 	int		fd;
@@ -72,7 +109,7 @@ t_map	*check_args(char *argv)
 	total_lines = ft_split(str, '\n');
 	if (!total_lines)
 		ft_exit("Invalid map");
-	map = check_rectangular(total_lines);
+	map = check_rectangular(argv);
 	if (!map)
 		ft_exit("Allocating memory failed");
 	check_letters(str);

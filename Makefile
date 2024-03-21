@@ -6,12 +6,12 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/27 15:48:51 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/19 12:39:01 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/21 12:28:26 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBMLX = lib/MLX42
 LIBFT = lib/libft
 LIB_BREW = /Users/${USER}/.brew/Cellar/glfw/3.4/lib

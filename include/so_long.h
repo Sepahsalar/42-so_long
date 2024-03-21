@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 13:16:39 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:12:22 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_map
 	int		image_height;
 	int		window_width;
 	int		window_height;
+	char	*line;
 }			t_map;
 
 typedef struct s_all_var

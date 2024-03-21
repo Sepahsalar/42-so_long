@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:48:14 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 13:20:17 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:32:29 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,22 @@ char	*ft_read(int fd)
 {
 	char	buf[51];
 	int		i;
-	char	*map;
+	char	*str;
 
 	i = 1;
-	map = ft_calloc(1, 1);
-	if (!map)
-		ft_exit("Allocating memory failed");
+	str = ft_calloc(1, 1);
+	if (!str)
+		ft_exit("Initializing str in read function failed");
 	while (i != 0)
 	{
 		i = read(fd, buf, 50);
 		if (i == -1)
 			ft_exit("Reading file failed");
 		buf[i] = '\0';
-		map = gnl_strjoin(map, buf);
-		if (!map)
+		str = gnl_strjoin(str, buf);
+		if (!str)
 			ft_exit("Joining failed");
 	}
-	// free(buf);
 	close(fd);
-	return (map);
+	return (str);
 }
