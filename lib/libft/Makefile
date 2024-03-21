@@ -6,7 +6,7 @@
 #    By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 16:56:34 by asohrabi          #+#    #+#              #
-#    Updated: 2024/03/15 11:59:04 by asohrabi         ###   ########.fr        #
+#    Updated: 2024/03/21 12:02:45 by asohrabi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ FUNC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 			ft_substr.c ft_tolower.c ft_toupper.c ft_lstadd_back.c ft_lstnew.c \
 			ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
 			ft_lstlast.c ft_lstmap.c ft_lstsize.c \
+			get_next_line.c get_next_line_utils.c \
 
 OBJ = ${FUNC:.c=.o}
 
