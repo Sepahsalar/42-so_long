@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:41:14 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 10:33:23 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:10:36 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ static void	move(void *param, char c)
 
 void	press_key(mlx_key_data_t keydata, void *param)
 {
-	//test MLX_REPEAT
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 		&& keydata.action == MLX_PRESS)
 		move(param, 'U');
@@ -105,7 +104,6 @@ void	press_key(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		free_collectible_list(((t_all_var *)param)->elems->collect_loc);
-		// free(((t_all_var *)param)->elems->collect_loc); //check if it is needed for player
 		free(((t_all_var *)param)->elems);
 		mlx_terminate(((t_all_var *)param)->window);
 		exit (EXIT_SUCCESS);

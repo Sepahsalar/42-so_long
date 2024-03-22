@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:36:40 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 13:17:20 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:10:14 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	check_extension(char *str, char *extension)
 	str = str + map_len - 4;
 	if (ft_strncmp(str, extension, 4))
 		ft_exit("Wrong file extension\nEx: map.ber");
-
 }
 
 void	check_pe(char *str)

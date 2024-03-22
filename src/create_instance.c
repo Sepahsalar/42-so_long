@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:17:35 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/15 09:32:23 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:27:29 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	instance_read_helper(mlx_t *window, t_elem *elements, t_loc loc)
 {
 	mlx_image_t	*image;
 
-	// if (loc.c != 'P' && loc.c != '0')
 	if (loc.c != '0')
 	{
 		if (loc.c == '1')

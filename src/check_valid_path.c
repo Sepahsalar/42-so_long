@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:47:18 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/21 13:19:00 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:08:46 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,6 @@ static void	fill_map(char **total_lines, t_loc size, t_loc cur, char check)
 	fill_map(total_lines, size, (t_loc){cur.x, cur.y - 1, cur.c}, check);
 }
 
-// void	print_map(char **a, t_map *map)
-// {
-// 	int		i;
-// 	size_t	j;
-
-// 	i = 0;
-// 	j = 0;
-// 	while (i < map->line_count)
-// 	{
-// 		j = 0;
-// 		while (j < map->line_width)
-// 		{
-// 			ft_printf("%c ", a[i][j]);
-// 			j++;
-// 		}
-// 		ft_printf("\n");
-// 		i++;
-// 	}
-// 	ft_printf("\n");
-// }
-
 void	check_valid_path(char **total_lines, t_map *map)
 {
 	t_loc	p_loc;
@@ -102,7 +81,6 @@ void	check_valid_path(char **total_lines, t_map *map)
 	size.x = map->line_width;
 	size.y = map->line_count;
 	p_loc = find_location(total_lines, map, 'P');
-	// print_map(total_lines, map);
 	fill_map(total_lines, size, p_loc, '1');
 	e_loc = find_character(total_lines, map, 'E');
 	c_loc = find_character(total_lines, map, 'C');

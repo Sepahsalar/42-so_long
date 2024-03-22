@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 20:40:34 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/18 20:56:00 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:07:33 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	check_exit(t_all_var *all)
 	if (p_x == e_x && p_y == e_y)
 	{
 		free_collectible_list(all->elems->collect_loc);
-		// free(all->elems->collect_loc); //check if it is needed for player
 		free(all->elems);
 		mlx_terminate(all->window);
 		exit (EXIT_SUCCESS);

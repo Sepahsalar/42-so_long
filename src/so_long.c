@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:42:23 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 13:44:10 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:27:52 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ void	ft_exit(char *message)
 	ft_putendl_fd("Error", STDERR_FILENO);
 	ft_putendl_fd(message, STDERR_FILENO);
 	exit(EXIT_FAILURE);
+}
+
+static void	free_end(t_all_var all)
+{
+	free_collectible_list(all.elems->collect_loc);
+	free(all.elems);
+	free(all.map);
+	mlx_terminate(all.window);
 }
 
 int	main(int argc, char **argv)
@@ -56,9 +64,6 @@ int	main(int argc, char **argv)
 	create_instance(all.window, all.elems, all.map, argv[1]);
 	mlx_key_hook(all.window, &press_key, &all);
 	mlx_loop(all.window);
-	free_collectible_list(all.elems->collect_loc);
-	free(all.elems);
-	free(all.map);
-	mlx_terminate(all.window);
-	return (EXIT_SUCCESS);
+	free_end(all);
+	return (0);
 }

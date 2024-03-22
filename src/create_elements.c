@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:45:45 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 13:09:20 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:09:10 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ t_elem	*create_elements(mlx_t *window, t_map *map, char *argv)
 		mlx_terminate(window);
 		ft_exit("Allocating memory failed");
 	}
-	//check if i nead anything for the player
 	elements->collect_loc = collectible_list(argv, 0);
 	if (!elements->collect_loc)
 	{
