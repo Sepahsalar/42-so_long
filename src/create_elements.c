@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:45:45 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/22 12:09:10 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:51:08 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ t_elem	*create_elements(mlx_t *window, t_map *map, char *argv)
 	if (!elements)
 	{
 		mlx_terminate(window);
-		ft_exit("Allocating memory failed");
+		ft_exit("Allocating memory for elements failed");
 	}
 	elements->collect_loc = collectible_list(argv, 0);
 	if (!elements->collect_loc)
 	{
 		free(elements);
 		mlx_terminate(window);
-		ft_exit("Creating Collectible list failed");
+		ft_exit("Creating collectible list failed");
 	}
 	elements->empty = background(window, map->window_width, map->window_height);
 	elements->wall = image(window, map->image_width, map->image_height, '1');

@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/22 12:19:27 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:52:09 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ t_map	*check_args(char *argv)
 		ft_exit("Invalid map");
 	map = check_rectangular(str, argv);
 	if (!map)
-		ft_exit("Allocating memory failed");
+		ft_exit("Creating map failed");
 	check_letters(str);
 	check_walls(total_lines, map);
 	check_valid_path(total_lines, map);

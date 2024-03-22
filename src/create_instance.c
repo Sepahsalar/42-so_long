@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:17:35 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/22 12:27:29 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:54:02 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	instance_read_helper(mlx_t *window, t_elem *elements, t_loc loc)
 		{
 			free(elements);
 			mlx_terminate(window);
-			ft_exit("Making instance failed");
+			ft_exit("Making instances failed");
 		}
 	}
 }
@@ -67,7 +67,7 @@ void	create_instance(mlx_t *window, t_elem *elements, t_map *map, char *arg)
 	{
 		free(elements);
 		mlx_terminate(window);
-		ft_exit("Allocating memory failed");
+		ft_exit("Image to window process failed");
 	}
 	fd = open(arg, O_RDONLY);
 	if (fd == -1)

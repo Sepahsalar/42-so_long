@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 13:58:06 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/19 12:34:03 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:50:45 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_collect_loc	*collect_read(int fd, t_loc loc, t_collect_loc *first)
 		{
 			new = malloc(sizeof(t_collect_loc));
 			if (!new)
-				ft_exit("Allocating memory failed");
+				ft_exit("Allocating memory for collectibe list failed");
 			new->x = loc.x;
 			new->y = loc.y;
 			new->enabled = 1;

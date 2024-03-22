@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 13:48:14 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/21 11:32:29 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:54:24 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_read(int fd)
 	i = 1;
 	str = ft_calloc(1, 1);
 	if (!str)
-		ft_exit("Initializing str in read function failed");
+		ft_exit("Initializing string in read function failed");
 	while (i != 0)
 	{
 		i = read(fd, buf, 50);
