@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/22 12:52:09 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:36:15 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,11 @@ static t_map	*check_rec_helper(int fd, t_map *map, int count)
 	return (map);
 }
 
-static t_map	*check_rectangular(char *str, char *argv)
+static int	count_lines(char *str)
 {
-	int		count;
-	int		fd;
-	int		i;
-	t_map	*map;
+	int	count;
+	int	i;
 
-	count = 0;
 	i = 0;
 	while (str[i])
 	{
@@ -68,39 +65,36 @@ static t_map	*check_rectangular(char *str, char *argv)
 			count++;
 		i++;
 	}
+}
+
+static t_map	*check_rectangular(char *str, char *argv)
+{
+	int		count;
+	int		fd;
+	t_map	*map;
+
+	count = count_lines(str);
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
+	{
+		free(str);
 		ft_exit("Opening file failed");
+	}
 	map = malloc(sizeof(t_map));
+	if (!map)
+	{
+		free(str);
+		close(fd);
+		ft_exit("Allocating memory for map failed");
+	}
 	map = check_rec_helper(fd, map, count);
 	if (map->line_count <= 0 || map->line_width <= 0)
 	{
+		free(str);
 		free(map);
 		ft_exit("Invalid map");
 	}
 	return (map);
-}
-
-static void	check_walls(char **total_lines, t_map *map)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < map->line_width)
-	{
-		if (total_lines[0][i] != '1'
-			|| total_lines[map->line_count - 1][i] != '1')
-			ft_exit("Invalid map: Not surrounded with walls");
-		i++;
-	}
-	i = 0;
-	while (total_lines[i])
-	{
-		if (total_lines[i][0] != '1'
-			|| total_lines[i][map->line_width - 1] != '1')
-			ft_exit("Invalid map: Not surrounded with walls");
-		i++;
-	}
 }
 
 t_map	*check_args(char *argv)
@@ -119,15 +113,21 @@ t_map	*check_args(char *argv)
 		ft_exit("Empty map");
 	total_lines = ft_split(str, '\n');
 	if (!total_lines)
+	{
+		free(str);
 		ft_exit("Invalid map");
+	}
 	map = check_rectangular(str, argv);
 	if (!map)
+	{
+		free(str);
 		ft_exit("Creating map failed");
+	}
 	check_letters(str);
+	free(str);
+	close(fd);
 	check_walls(total_lines, map);
 	check_valid_path(total_lines, map);
 	ft_free(total_lines);
-	free(str);
-	close(fd);
 	return (map);
 }

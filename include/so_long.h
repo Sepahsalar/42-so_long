@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:48:15 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/21 12:12:22 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:30:40 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ typedef struct s_all_var
 	int		*move_count;
 }			t_all_var;
 
-t_map			*check_args(char *argv); //check if the return should be pointer
+t_map			*check_args(char *argv);
 void			ft_exit(char *message);
 char			*gnl_strjoin(char *s1, char *s2);
 char			*ft_read(int fd);
 void			check_extension(char *str, char *extension);
-void			check_pe(char *str);
 void			check_letters(char *str);
+void			check_walls(char **total_lines, t_map *map);
 void			check_valid_path(char **total_lines, t_map *map);
 void			ft_free(char **array);
 void			cal_size(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:36:40 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/22 12:55:32 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/03/25 17:37:13 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,12 @@ void	check_extension(char *str, char *extension)
 		ft_exit("Wrong file extension\nEx: map.ber");
 }
 
-void	check_pe(char *str)
+void	check_letters(char *str)
 {
+	int		i;
 	char	*check;
 
+	i = 0;
 	check = ft_strchr(str, 'P');
 	if (check)
 		if (ft_strchr(check + 1, 'P'))
@@ -78,21 +80,35 @@ void	check_pe(char *str)
 	if (check)
 		if (ft_strchr(check + 1, 'E'))
 			ft_exit("Invalid map: More than 1 map exit");
-}
-
-void	check_letters(char *str)
-{
-	int	i;
-
-	i = 0;
 	if (!(ft_strchr(str, 'C')) || !(ft_strchr(str, 'P'))
 		|| !(ft_strchr(str, 'E')) || !(ft_strchr(str, '1')))
 		ft_exit("Invalid map: Not enough characters");
-	check_pe(str);
 	while (str[i])
 	{
 		if (!(ft_strchr("01CEP\n", str[i])))
 			ft_exit("Invalid map: Wrong characters");
+		i++;
+	}
+}
+
+void	check_walls(char **total_lines, t_map *map)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < map->line_width)
+	{
+		if (total_lines[0][i] != '1'
+			|| total_lines[map->line_count - 1][i] != '1')
+			ft_exit("Invalid map: Not surrounded with walls");
+		i++;
+	}
+	i = 0;
+	while (total_lines[i])
+	{
+		if (total_lines[i][0] != '1'
+			|| total_lines[i][map->line_width - 1] != '1')
+			ft_exit("Invalid map: Not surrounded with walls");
 		i++;
 	}
 }
