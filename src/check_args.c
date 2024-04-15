@@ -6,7 +6,7 @@
 /*   By: asohrabi <asohrabi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:03:56 by asohrabi          #+#    #+#             */
-/*   Updated: 2024/03/25 17:36:15 by asohrabi         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:32:23 by asohrabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,14 @@ static int	count_lines(char *str)
 	int	i;
 
 	i = 0;
+	count = 0;
 	while (str[i])
 	{
 		if (str[i] == '\n')
 			count++;
 		i++;
 	}
+	return (count);
 }
 
 static t_map	*check_rectangular(char *str, char *argv)
